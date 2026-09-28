@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return response('MarketLink project foundation is ready.');
-});
+Route::view('/', 'splash')->name('splash');
+
+Route::view('/marketplace', 'public.marketplace-placeholder')
+    ->name('marketplace.home');
