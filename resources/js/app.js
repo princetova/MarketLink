@@ -23,3 +23,99 @@ if (splash instanceof HTMLElement) {
         }, duration);
     }
 }
+
+const navToggle = document.querySelector('[data-nav-toggle]');
+const navPanel = document.querySelector('[data-nav-panel]');
+
+if (navToggle instanceof HTMLButtonElement && navPanel instanceof HTMLElement) {
+    const closeNavigation = () => {
+        navPanel.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navPanel.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navPanel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeNavigation);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeNavigation();
+        }
+    });
+}
+
+const noticeDialog = document.querySelector('[data-notice-dialog]');
+
+if (noticeDialog instanceof HTMLDialogElement) {
+    const dialogTitle = noticeDialog.querySelector('[data-dialog-title]');
+    const dialogMessage = noticeDialog.querySelector('[data-dialog-message]');
+
+    document.querySelectorAll('[data-coming-soon]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            const feature = trigger.getAttribute('data-coming-soon') ?? 'This feature';
+
+            if (dialogTitle) {
+                dialogTitle.textContent = `${feature} is coming soon`;
+            }
+
+            if (dialogMessage) {
+                dialogMessage.textContent = 'This preview stays on the public homepage while account and marketplace functionality are built in their own focused stages.';
+            }
+
+            noticeDialog.showModal();
+        });
+    });
+
+    noticeDialog.querySelectorAll('[data-dialog-close]').forEach((button) => {
+        button.addEventListener('click', () => noticeDialog.close());
+    });
+
+    noticeDialog.addEventListener('click', (event) => {
+        if (event.target === noticeDialog) {
+            noticeDialog.close();
+        }
+    });
+}
+
+const marketplaceSearch = document.querySelector('[data-marketplace-search]');
+
+if (marketplaceSearch instanceof HTMLFormElement) {
+    marketplaceSearch.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const query = new FormData(marketplaceSearch).get('query')?.toString().trim();
+        const status = marketplaceSearch.querySelector('[data-search-status]');
+
+        if (status) {
+            status.textContent = query
+                ? `Search for “${query}” is ready for the marketplace catalogue stage.`
+                : 'Enter a produce, farmer, or market name to preview your search.';
+        }
+    });
+}
+
+const heroVideo = document.querySelector('[data-hero-video]');
+
+if (heroVideo instanceof HTMLVideoElement) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const syncHeroMotion = () => {
+        if (reducedMotion.matches) {
+            heroVideo.pause();
+            heroVideo.currentTime = 0;
+            return;
+        }
+
+        heroVideo.play().catch(() => {
+            // The poster remains visible when a browser blocks autoplay.
+        });
+    };
+
+    syncHeroMotion();
+    reducedMotion.addEventListener('change', syncHeroMotion);
+}
