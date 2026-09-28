@@ -17,7 +17,7 @@ The three application roles are:
 - Database: MySQL
 - Architecture: modular Laravel monolith
 
-Do not introduce React, Vue, Angular, Next.js, Nuxt, jQuery, another backend framework, or microservices without an explicit architecture decision approved by the team.
+Do not introduce React, Vue, Angular, Next.js, Nuxt, jQuery, another backend framework, or microservices unless the project architecture is explicitly changed.
 
 ## Local setup
 
@@ -58,27 +58,27 @@ Create classes and files only when a feature needs them. Do not add fake empty c
 - Keep routes named, views responsive, database access through Eloquent/query builder, and list screens paginated.
 - Prefer existing shared components and design tokens over duplication.
 - Add or update tests with feature work.
-- Do not rewrite unrelated teammate files.
+- Do not rewrite unrelated files or redesign unrelated screens.
 
 ## Git workflow
 
-GitHub Desktop is the team tool for creating branches, committing, pulling, pushing, merging, and resolving Git operations. Before coding, pull the latest approved base branch and create a focused branch. One feature should generally be developed on one feature branch.
+MarketLink is an individual project. The user handles branch creation, commits, pulling, pushing, merging, publishing branches, and Git conflict resolution through GitHub Desktop. Coding assistants must not perform those operations or alter remotes unless explicitly instructed.
+
+`main` is the stable, integrated application. Start each screen or feature from the current `main`, finish and validate it on one focused branch, review the changes, then use GitHub Desktop to commit, push, and merge it before creating the next branch. Do not jump ahead to later roadmap items while the current feature is incomplete.
 
 Branch patterns:
 
-- `setup/<name>` for project setup
 - `feature/<name>` for features
 - `fix/<name>` for corrections
+- `chore/<name>` for project maintenance
 - `docs/<name>` for documentation
 
-Examples: `feature/splash-screen`, `feature/public-homepage`, `feature/farmer-products`, `feature/customer-orders`, and `feature/admin-markets`.
+Examples: `feature/splash-screen`, `feature/public-homepage`, `feature/login`, `feature/customer-registration`, `feature/farmer-registration`, `feature/customer-dashboard`, `feature/farmer-dashboard`, `feature/farmer-products`, `feature/farmer-orders`, `feature/pickup-slots`, `feature/maps`, `feature/ai-assistant`, and `feature/admin-dashboard`.
 
-Before handing off work:
+Before finishing work:
 
 1. Review the diff in GitHub Desktop.
 2. Run relevant tests and `npm run build`.
 3. Confirm secrets and local artifacts are not included.
-4. Record the feature, branch, status, and notes in `TEAM_TASKS.md`.
-5. Ask the integration lead to review shared-file changes.
-
-The integration lead should preferably coordinate `routes/web.php`, `resources/css/app.css`, `resources/js/app.js`, `resources/views/layouts/*`, shared components, and architecture documentation. Feature developers should mainly edit their assigned module.
+4. Record the feature, branch, status, and notes in `DEVELOPMENT_ROADMAP.md`.
+5. Leave the changes uncommitted for review unless the user explicitly requests a Git operation.

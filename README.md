@@ -19,8 +19,8 @@ MarketLink is a pickup-only agricultural marketplace that connects local farmers
 ## Installation
 
 ```bash
-git clone https://github.com/Aptech-com/Marketting.git
-cd Marketting
+git clone https://github.com/princetova/MarketLink.git
+cd MarketLink
 composer install
 npm install
 cp .env.example .env
@@ -29,7 +29,7 @@ php artisan key:generate
 
 On Windows Command Prompt, use `copy .env.example .env`. Create a local MySQL database named `marketlink` (or choose another name), then update the `DB_*` values in `.env`. Never commit `.env` or credentials.
 
-When the team is ready to apply migrations:
+When the project is ready to apply migrations:
 
 ```bash
 php artisan migrate
@@ -44,8 +44,8 @@ php artisan serve
 
 For frontend development, use `npm run dev` in a separate terminal.
 
-## Team workflow
+## Development workflow
 
-Read [PROJECT_GUIDE.md](PROJECT_GUIDE.md), [ARCHITECTURE.md](ARCHITECTURE.md), [UI_GUIDE.md](UI_GUIDE.md), [DATABASE_PLAN.md](DATABASE_PLAN.md), [TEAM_TASKS.md](TEAM_TASKS.md), and [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) before starting feature work. Develop one feature per branch, keep changes inside the assigned module, and let the integration lead coordinate shared files.
+Read [PROJECT_GUIDE.md](PROJECT_GUIDE.md), [ARCHITECTURE.md](ARCHITECTURE.md), [UI_GUIDE.md](UI_GUIDE.md), [DATABASE_PLAN.md](DATABASE_PLAN.md), [DEVELOPMENT_ROADMAP.md](DEVELOPMENT_ROADMAP.md), and [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) before starting feature work. Develop one screen or feature per branch, test and review it, then use GitHub Desktop to commit, push, and merge it into `main` before beginning the next feature.
 
 MarketLink is licensed under the MIT License. See [LICENSE](LICENSE).
