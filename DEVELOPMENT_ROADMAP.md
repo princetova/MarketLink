@@ -11,7 +11,8 @@ Allowed statuses are `NOT STARTED`, `IN PROGRESS`, `REVIEW`, and `DONE`.
 | Public Homepage | `feature/public-homepage` | DONE | Implemented, validated, and integrated before the sign-in stage. |
 | Sign In | `feature/login` | DONE | Session authentication and the sign-in screen are implemented, validated, and integrated. |
 | Customer Registration | `feature/customer-registration` | DONE | Customer account creation is implemented, validated, and integrated. |
-| Farmer Registration | `feature/farmer-registration` | REVIEW | Farmer account creation and pending approval state are implemented and validated; awaiting GitHub Desktop review. |
+| Farmer Registration | `feature/farmer-registration` | DONE | Farmer account creation and pending approval state are implemented, validated, and integrated. |
+| Farmer Account Status | `feature/farmer-account-status` | REVIEW | Protected status experience and role-aware authentication redirects are implemented and validated; awaiting GitHub Desktop review. |
 | Authentication | `feature/authentication` | NOT STARTED | Implement role-aware login and registration in focused steps. |
 | Customer Marketplace | `feature/customer-marketplace` | NOT STARTED |  |
 | Customer Orders | `feature/customer-orders` | NOT STARTED | Pickup-only ordering. |

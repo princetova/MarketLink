@@ -47,7 +47,7 @@ class FarmerRegistrationTest extends TestCase
         $user = User::query()->where('email', 'farmer@example.com')->firstOrFail();
 
         $response
-            ->assertRedirect(route('marketplace.home'))
+            ->assertRedirect(route('farmer.status'))
             ->assertSessionHas('status', 'Your farmer account has been created and is pending approval.');
 
         $this->assertAuthenticatedAs($user);
@@ -82,7 +82,7 @@ class FarmerRegistrationTest extends TestCase
             'email' => 'security-test@example.com',
             'role' => User::ROLE_ADMIN,
             'approval_status' => FarmerProfile::STATUS_APPROVED,
-        ]))->assertRedirect(route('marketplace.home'));
+        ]))->assertRedirect(route('farmer.status'));
 
         $user = User::query()->where('email', 'security-test@example.com')->firstOrFail();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Services\Auth\PostAuthenticationRedirector;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +17,14 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    public function store(LoginRequest $request): RedirectResponse
-    {
+    public function store(
+        LoginRequest $request,
+        PostAuthenticationRedirector $redirector,
+    ): RedirectResponse {
         $request->authenticate();
         $request->session()->regenerate();
 
-        return redirect()->route('marketplace.home');
+        return redirect()->route($redirector->routeName($request->user()));
     }
 
     public function destroy(Request $request): RedirectResponse

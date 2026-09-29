@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterFarmerRequest;
 use App\Models\FarmerProfile;
 use App\Models\User;
+use App\Services\Auth\PostAuthenticationRedirector;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +20,10 @@ class RegisteredFarmerController extends Controller
         return view('auth.register-farmer');
     }
 
-    public function store(RegisterFarmerRequest $request): RedirectResponse
-    {
+    public function store(
+        RegisterFarmerRequest $request,
+        PostAuthenticationRedirector $redirector,
+    ): RedirectResponse {
         $user = DB::transaction(function () use ($request): User {
             $user = User::create([
                 'name' => $request->string('name')->toString(),
@@ -43,7 +46,7 @@ class RegisteredFarmerController extends Controller
         $request->session()->regenerate();
 
         return redirect()
-            ->route('marketplace.home')
+            ->route($redirector->routeName($user))
             ->with('status', 'Your farmer account has been created and is pending approval.');
     }
 }
