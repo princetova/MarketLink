@@ -12,6 +12,12 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <x-public.header />
 
+    @if (session('status'))
+        <div class="site-notice" role="status">
+            <div class="container">{{ session('status') }}</div>
+        </div>
+    @endif
+
     <main id="main-content">
         @yield('content')
     </main>

@@ -188,7 +188,7 @@
         <div class="container">
             <x-public.section-heading eyebrow="One marketplace, two paths" title="Ready to grow with MarketLink?" copy="Come for the fresh food. Stay for the stronger local connections." align="center" />
             <div class="join-grid" id="join-title">
-                <article class="join-card join-card--customer"><span>For customers</span><h3>Find food you can feel good about.</h3><p>Discover seasonal produce, reserve ahead, and collect at a convenient local pickup point.</p><button class="button button--primary button--large" type="button" data-coming-soon="Customer account">Join as a Customer</button></article>
+                <article class="join-card join-card--customer"><span>For customers</span><h3>Find food you can feel good about.</h3><p>Discover seasonal produce, reserve ahead, and collect at a convenient local pickup point.</p><a class="button button--primary button--large" href="{{ route('register.customer') }}">Join as a Customer</a></article>
                 <article class="join-card join-card--farmer"><span>For farmers</span><h3>Reach nearby customers with less friction.</h3><p>Share your harvest, prepare reserved orders, and meet customers at your chosen pickup point.</p><button class="button button--light button--large" type="button" data-coming-soon="Farmer account">Join as a Farmer</button></article>
             </div>
         </div>

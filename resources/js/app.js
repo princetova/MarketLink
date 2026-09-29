@@ -120,28 +120,29 @@ if (heroVideo instanceof HTMLVideoElement) {
     reducedMotion.addEventListener('change', syncHeroMotion);
 }
 
-const passwordToggle = document.querySelector('[data-password-toggle]');
-
-if (passwordToggle instanceof HTMLButtonElement) {
+document.querySelectorAll('[data-password-toggle]').forEach((passwordToggle) => {
     const passwordInput = document.getElementById(passwordToggle.getAttribute('aria-controls') ?? '');
 
-    if (passwordInput instanceof HTMLInputElement) {
+    if (passwordToggle instanceof HTMLButtonElement && passwordInput instanceof HTMLInputElement) {
+        const passwordLabel = (passwordToggle.getAttribute('aria-label') ?? 'Show password')
+            .replace(/^(Show|Hide)\s+/i, '');
+
         passwordToggle.addEventListener('click', () => {
             const willShowPassword = passwordInput.type === 'password';
 
             passwordInput.type = willShowPassword ? 'text' : 'password';
             passwordToggle.textContent = willShowPassword ? 'Hide' : 'Show';
-            passwordToggle.setAttribute('aria-label', `${willShowPassword ? 'Hide' : 'Show'} password`);
+            passwordToggle.setAttribute('aria-label', `${willShowPassword ? 'Hide' : 'Show'} ${passwordLabel}`);
         });
     }
-}
+});
 
-const loginForm = document.querySelector('[data-login-form]');
+const authForm = document.querySelector('[data-auth-form]');
 
-if (loginForm instanceof HTMLFormElement) {
-    loginForm.addEventListener('submit', () => {
-        const submitButton = loginForm.querySelector('[data-submit-button]');
-        const submitLabel = loginForm.querySelector('[data-submit-label]');
+if (authForm instanceof HTMLFormElement) {
+    authForm.addEventListener('submit', () => {
+        const submitButton = authForm.querySelector('[data-submit-button]');
+        const submitLabel = authForm.querySelector('[data-submit-label]');
 
         if (submitButton instanceof HTMLButtonElement) {
             submitButton.disabled = true;
@@ -149,7 +150,7 @@ if (loginForm instanceof HTMLFormElement) {
         }
 
         if (submitLabel) {
-            submitLabel.textContent = 'Signing in…';
+            submitLabel.textContent = authForm.dataset.loadingLabel ?? 'Please wait…';
         }
     });
 }

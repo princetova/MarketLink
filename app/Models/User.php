@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -12,6 +13,12 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
+    public const ROLE_CUSTOMER = 'CUSTOMER';
+
+    public const ROLE_FARMER = 'FARMER';
+
+    public const ROLE_ADMIN = 'ADMIN';
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +28,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'role',
         'password',
     ];
 
@@ -45,5 +54,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /** @return HasOne<CustomerProfile, $this> */
+    public function customerProfile(): HasOne
+    {
+        return $this->hasOne(CustomerProfile::class);
     }
 }

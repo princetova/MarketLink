@@ -32,7 +32,7 @@
                 <p>Sign in to continue to MarketLink.</p>
             </div>
 
-            <form class="auth-form" method="POST" action="{{ route('login.store') }}" data-login-form>
+            <form class="auth-form" method="POST" action="{{ route('login.store') }}" data-auth-form data-loading-label="Signing in…">
                 @csrf
 
                 <div class="auth-field">
@@ -98,7 +98,7 @@
             <div class="auth-join" aria-labelledby="auth-join-title">
                 <p id="auth-join-title">New to MarketLink?</p>
                 <div>
-                    <button type="button" data-auth-future="Customer registration">Join as a Customer</button>
+                    <a href="{{ route('register.customer') }}">Join as a Customer</a>
                     <span aria-hidden="true">·</span>
                     <button type="button" data-auth-future="Farmer registration">Join as a Farmer</button>
                 </div>

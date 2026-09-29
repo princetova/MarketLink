@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredCustomerController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'splash')->name('splash');
@@ -13,6 +14,10 @@ Route::middleware('guest')->group(function (): void {
         ->name('login');
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->name('login.store');
+    Route::get('/register/customer', [RegisteredCustomerController::class, 'create'])
+        ->name('register.customer');
+    Route::post('/register/customer', [RegisteredCustomerController::class, 'store'])
+        ->name('register.customer.store');
 });
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])

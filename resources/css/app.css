@@ -872,6 +872,7 @@ body {
 
 /* Screen 03: Sign in */
 .auth-page {
+    min-width: 0;
     min-height: 100vh;
     min-height: 100dvh;
     background: var(--ml-cream);
@@ -882,7 +883,8 @@ body {
 }
 
 .auth-page button,
-.auth-page input {
+.auth-page input,
+.auth-page textarea {
     font: inherit;
 }
 
@@ -1017,6 +1019,7 @@ body {
 }
 
 .auth-field > input,
+.auth-field > textarea,
 .auth-password {
     width: 100%;
     min-height: 3.35rem;
@@ -1031,12 +1034,20 @@ body {
     padding: 0.8rem 0.95rem;
 }
 
+.auth-field > textarea {
+    min-height: 5rem;
+    resize: vertical;
+    padding: 0.8rem 0.95rem;
+}
+
 .auth-field > input:hover,
+.auth-field > textarea:hover,
 .auth-password:hover {
     border-color: #a9baae;
 }
 
 .auth-field > input:focus,
+.auth-field > textarea:focus,
 .auth-password:focus-within {
     border-color: var(--ml-green);
     outline: 0;
@@ -1044,6 +1055,7 @@ body {
 }
 
 .auth-field > input[aria-invalid="true"],
+.auth-field > textarea[aria-invalid="true"],
 .auth-password:has(input[aria-invalid="true"]) {
     border-color: #a84c45;
 }
@@ -1057,7 +1069,8 @@ body {
 }
 
 .auth-future-link,
-.auth-join button {
+.auth-join button,
+.auth-join a {
     border: 0;
     padding: 0.25rem 0;
     background: transparent;
@@ -1065,6 +1078,7 @@ body {
     cursor: pointer;
     font-size: 0.82rem;
     font-weight: 750;
+    text-decoration: none;
 }
 
 .auth-password {
@@ -1149,6 +1163,7 @@ body {
 .auth-submit:focus-visible,
 .auth-future-link:focus-visible,
 .auth-join button:focus-visible,
+.auth-join a:focus-visible,
 .auth-password__toggle:focus-visible,
 .auth-visual__back:focus-visible,
 .auth-brand:focus-visible {
@@ -1217,6 +1232,49 @@ body {
     text-align: center;
 }
 
+.site-notice {
+    border-bottom: 1px solid #b8ddc4;
+    padding-block: 0.75rem;
+    background: #e9f7ed;
+    color: var(--ml-forest);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.auth-panel--register {
+    align-items: start;
+}
+
+.auth-panel--register .auth-panel__inner {
+    padding-block: 0.5rem;
+}
+
+.auth-panel--register .auth-brand {
+    margin-bottom: 0.75rem;
+}
+
+.auth-panel--register .auth-brand img {
+    height: 4.25rem;
+}
+
+.auth-panel--register .auth-heading h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.auth-panel--register .auth-form {
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+}
+
+.auth-panel--register .auth-field {
+    gap: 0.35rem;
+}
+
+.auth-panel--register .auth-join {
+    padding-top: 0.9rem;
+}
+
 @keyframes auth-spin {
     to { transform: rotate(360deg); }
 }
@@ -1239,6 +1297,7 @@ body {
     .auth-visual__content div p { max-width: 31rem; margin: 0; color: rgba(255, 255, 255, 0.78); font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.7; }
     .auth-visual__note { display: block; margin: 0; color: rgba(255, 255, 255, 0.66); font-size: 0.78rem; }
     .auth-panel { min-height: 100vh; min-height: 100dvh; padding-inline: clamp(2rem, 5vw, 6rem); }
+    .auth-panel--register { padding-block: 1.5rem; }
 }
 
 @media (max-height: 760px) and (min-width: 900px) {
