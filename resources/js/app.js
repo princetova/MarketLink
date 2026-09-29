@@ -119,3 +119,48 @@ if (heroVideo instanceof HTMLVideoElement) {
     syncHeroMotion();
     reducedMotion.addEventListener('change', syncHeroMotion);
 }
+
+const passwordToggle = document.querySelector('[data-password-toggle]');
+
+if (passwordToggle instanceof HTMLButtonElement) {
+    const passwordInput = document.getElementById(passwordToggle.getAttribute('aria-controls') ?? '');
+
+    if (passwordInput instanceof HTMLInputElement) {
+        passwordToggle.addEventListener('click', () => {
+            const willShowPassword = passwordInput.type === 'password';
+
+            passwordInput.type = willShowPassword ? 'text' : 'password';
+            passwordToggle.textContent = willShowPassword ? 'Hide' : 'Show';
+            passwordToggle.setAttribute('aria-label', `${willShowPassword ? 'Hide' : 'Show'} password`);
+        });
+    }
+}
+
+const loginForm = document.querySelector('[data-login-form]');
+
+if (loginForm instanceof HTMLFormElement) {
+    loginForm.addEventListener('submit', () => {
+        const submitButton = loginForm.querySelector('[data-submit-button]');
+        const submitLabel = loginForm.querySelector('[data-submit-label]');
+
+        if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-busy', 'true');
+        }
+
+        if (submitLabel) {
+            submitLabel.textContent = 'Signing in…';
+        }
+    });
+}
+
+const authFutureStatus = document.querySelector('[data-auth-future-status]');
+
+document.querySelectorAll('[data-auth-future]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+        if (authFutureStatus) {
+            const feature = trigger.getAttribute('data-auth-future') ?? 'This feature';
+            authFutureStatus.textContent = `${feature} is coming in its own MarketLink feature.`;
+        }
+    });
+});

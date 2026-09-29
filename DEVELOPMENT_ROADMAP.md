@@ -8,7 +8,8 @@ Allowed statuses are `NOT STARTED`, `IN PROGRESS`, `REVIEW`, and `DONE`.
 | --- | --- | --- | --- |
 | Foundation | `setup/project-foundation` | DONE | Laravel foundation and core technical documentation are established. |
 | Splash Screen | `feature/splash-screen` | DONE | Implemented, validated, and integrated before the public homepage stage. |
-| Public Homepage | `feature/public-homepage` | REVIEW | Implemented and validated; awaiting GitHub Desktop review. |
+| Public Homepage | `feature/public-homepage` | DONE | Implemented, validated, and integrated before the sign-in stage. |
+| Sign In | `feature/login` | REVIEW | Session authentication and the sign-in screen are implemented and validated; awaiting GitHub Desktop review. |
 | Authentication | `feature/authentication` | NOT STARTED | Implement role-aware login and registration in focused steps. |
 | Customer Marketplace | `feature/customer-marketplace` | NOT STARTED |  |
 | Customer Orders | `feature/customer-orders` | NOT STARTED | Pickup-only ordering. |
