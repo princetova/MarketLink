@@ -6,7 +6,6 @@ use App\Models\CustomerProfile;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Route;
 use RuntimeException;
 use Tests\TestCase;
 
@@ -150,22 +149,17 @@ class CustomerRegistrationTest extends TestCase
         $this->assertDatabaseCount('customer_profiles', 0);
     }
 
-    public function test_customer_links_are_live_and_farmer_registration_remains_unavailable(): void
+    public function test_customer_registration_links_remain_live(): void
     {
         $this->get(route('marketplace.home'))
             ->assertOk()
             ->assertSee(route('register.customer'), escape: false)
-            ->assertSee('Join as a Customer')
-            ->assertSee('data-coming-soon="Farmer account"', escape: false);
+            ->assertSee('Join as a Customer');
 
         $this->get(route('login'))
             ->assertOk()
             ->assertSee(route('register.customer'), escape: false)
-            ->assertSee('Join as a Customer')
-            ->assertSee('data-auth-future="Farmer registration"', escape: false);
-
-        $this->assertFalse(Route::has('register.farmer'));
-        $this->get('/register/farmer')->assertNotFound();
+            ->assertSee('Join as a Customer');
     }
 
     public function test_existing_users_can_still_sign_in_without_profile_data(): void

@@ -61,4 +61,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(CustomerProfile::class);
     }
+
+    /** @return HasOne<FarmerProfile, $this> */
+    public function farmerProfile(): HasOne
+    {
+        return $this->hasOne(FarmerProfile::class);
+    }
 }

@@ -100,7 +100,7 @@
                 <div>
                     <a href="{{ route('register.customer') }}">Join as a Customer</a>
                     <span aria-hidden="true">·</span>
-                    <button type="button" data-auth-future="Farmer registration">Join as a Farmer</button>
+                    <a href="{{ route('register.farmer') }}">Join as a Farmer</a>
                 </div>
             </div>
 

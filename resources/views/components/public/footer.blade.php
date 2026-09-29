@@ -25,7 +25,7 @@
             <h2>Account</h2>
             <a href="{{ route('login') }}">Sign in</a>
             <a href="{{ route('register.customer') }}">Join as a customer</a>
-            <button type="button" data-coming-soon="Farmer account">Join as a farmer</button>
+            <a href="{{ route('register.farmer') }}">Join as a farmer</a>
         </div>
     </div>
     <div class="container site-footer__bottom">
