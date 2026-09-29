@@ -165,3 +165,28 @@ document.querySelectorAll('[data-auth-future]').forEach((trigger) => {
         }
     });
 });
+
+document.querySelectorAll('[data-approval-form]').forEach((form) => {
+    if (!(form instanceof HTMLFormElement)) {
+        return;
+    }
+
+    form.addEventListener('submit', (event) => {
+        const statusSelect = form.querySelector('[data-approval-status]');
+
+        if (!(statusSelect instanceof HTMLSelectElement)) {
+            return;
+        }
+
+        const status = statusSelect.value;
+
+        if (['REJECTED', 'SUSPENDED'].includes(status)) {
+            const action = status === 'REJECTED' ? 'reject' : 'suspend';
+            const confirmed = window.confirm(`Confirm that you want to ${action} this farmer account.`);
+
+            if (!confirmed) {
+                event.preventDefault();
+            }
+        }
+    });
+});

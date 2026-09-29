@@ -12,7 +12,7 @@ Allowed statuses are `NOT STARTED`, `IN PROGRESS`, `REVIEW`, and `DONE`.
 | Sign In | `feature/login` | DONE | Session authentication and the sign-in screen are implemented, validated, and integrated. |
 | Customer Registration | `feature/customer-registration` | DONE | Customer account creation is implemented, validated, and integrated. |
 | Farmer Registration | `feature/farmer-registration` | DONE | Farmer account creation and pending approval state are implemented, validated, and integrated. |
-| Farmer Account Status | `feature/farmer-account-status` | REVIEW | Protected status experience and role-aware authentication redirects are implemented and validated; awaiting GitHub Desktop review. |
+| Farmer Account Status | `feature/farmer-account-status` | DONE | Protected status experience and role-aware authentication redirects are implemented, validated, and integrated. |
 | Authentication | `feature/authentication` | NOT STARTED | Implement role-aware login and registration in focused steps. |
 | Customer Marketplace | `feature/customer-marketplace` | NOT STARTED |  |
 | Customer Orders | `feature/customer-orders` | NOT STARTED | Pickup-only ordering. |
@@ -27,7 +27,7 @@ Allowed statuses are `NOT STARTED`, `IN PROGRESS`, `REVIEW`, and `DONE`.
 | Map & Locations | `feature/maps` | NOT STARTED | OpenStreetMap and Leaflet direction. |
 | AI Assistant | `feature/ai-assistant` | NOT STARTED | AI access must go through `AIService`. |
 | Admin Dashboard | `feature/admin-dashboard` | NOT STARTED |  |
-| Farmer Approval | `feature/farmer-approval` | NOT STARTED | Uses the frozen farmer status model. |
+| Admin Farmer Approval | `feature/admin-farmer-approval` | REVIEW | Admin-only review workflow with search, filtering, pagination, controlled status transitions, and review metadata. |
 | Market Management | `feature/market-management` | NOT STARTED |  |
 | Reports | `feature/reports` | NOT STARTED |  |
 | Testing | `feature/testing` | NOT STARTED | Expand automated and manual coverage alongside features. |

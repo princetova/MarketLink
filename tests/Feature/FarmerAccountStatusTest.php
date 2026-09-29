@@ -208,10 +208,12 @@ class FarmerAccountStatusTest extends TestCase
         }
     }
 
-    public function test_farmer_dashboard_and_admin_approval_routes_were_not_created(): void
+    public function test_farmer_dashboard_remains_uncreated_and_admin_approval_uses_its_named_routes(): void
     {
         $this->assertFalse(Route::has('farmer.dashboard'));
         $this->assertFalse(Route::has('admin.farmers.approve'));
+        $this->assertTrue(Route::has('admin.farmers.approvals.index'));
+        $this->assertTrue(Route::has('admin.farmers.approvals.update'));
         $this->get('/farmer/dashboard')->assertNotFound();
     }
 

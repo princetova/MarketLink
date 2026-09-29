@@ -21,11 +21,28 @@ class FarmerProfile extends Model
         'business_name',
         'address',
         'approval_status',
+        'reviewed_by',
+        'reviewed_at',
+        'review_note',
     ];
+
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'reviewed_at' => 'datetime',
+        ];
+    }
 
     /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /** @return BelongsTo<User, $this> */
+    public function reviewer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'reviewed_by');
     }
 }
